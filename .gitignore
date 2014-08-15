@@ -1,3 +1,4 @@
 env/
 setuptools-*.zip
 ez_setup.py
+doc/build

@@ -1,5 +1,9 @@
 NAME=env
 
+.PHONY: doc
+doc:
+	cd doc && make html
+
 setup: ez_setup.py $(NAME)
 	@echo "  - Installing setuptools"
 	wget https://bootstrap.pypa.io/ez_setup.py -O - | $(NAME)/bin/python
