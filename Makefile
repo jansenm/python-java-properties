@@ -1,5 +1,22 @@
 NAME=env
 
+
+test:
+	python -m unittest
+
+develop:
+	$(NAME)/bin/python setup.py develop
+
+clean: clean-doc clean-egg
+	find mjbiz -name __pycache__ | xargs rm -fr
+	$(NAME)/bin/python setup.py clean
+
+clean-doc:
+	rm -rf doc/build/
+
+clean-egg:
+	rm -rf *.egg-info
+
 .PHONY: doc
 doc:
 	cd doc && make html

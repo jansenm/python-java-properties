@@ -11,7 +11,16 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+TODO
 
+.. automodule:: mjbiz.java.properties
+
+.. autoclass:: mjbiz.java.properties.Properties
+   :members:
+.. :special-members: __getitem__, __setitem__, __delitem__
+.. :inherited-members:
+   :undoc-members:
+   :private-members:
 
 Indices and tables
 ==================

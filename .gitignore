@@ -2,3 +2,5 @@ env/
 setuptools-*.zip
 ez_setup.py
 doc/build
+*.egg-info
+__pycache__/
