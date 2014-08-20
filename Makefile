@@ -13,6 +13,8 @@ veryclean:
 clean: clean-doc clean-egg setup-clean
 	find mjbiz -name __pycache__ | xargs rm -fr
 
+check: setup-check
+
 clean-doc:
 	rm -rf doc/build/
 
