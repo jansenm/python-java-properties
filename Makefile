@@ -7,9 +7,11 @@ test: build
 develop:
 	$(NAME)/bin/python setup.py develop
 
-clean: clean-doc clean-egg
+veryclean:
+	rm -rf build/
+
+clean: clean-doc clean-egg setup-clean
 	find mjbiz -name __pycache__ | xargs rm -fr
-	$(NAME)/bin/python setup.py clean
 
 clean-doc:
 	rm -rf doc/build/
