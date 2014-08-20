@@ -1,7 +1,7 @@
 NAME=env
 
 
-test:
+test: build
 	python -m unittest
 
 develop:
