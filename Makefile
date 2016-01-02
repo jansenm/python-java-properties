@@ -5,6 +5,7 @@ NAME=env
 PYTHON := $(PWD)/env/bin/python
 PYTHON_UNITTEST := $(PYTHON) -m unittest
 PYTHON_JUNIT := $(PYTHON) -m xmlrunner
+PYTHON_PIP := $(PYTHON) -m pip
 
 test: build
 	$(PYTHON_UNITTEST) discover
@@ -14,7 +15,7 @@ test-junit: build
 	cd build/test/junit; $(PYTHON_JUNIT) discover -t ../../.. ../../../mjbiz
 
 develop:
-	$(NAME)/bin/python setup.py develop
+	$(PYTHON) setup.py develop
 
 veryclean:
 	rm -rf build/
@@ -36,14 +37,14 @@ doc:
 
 setup-%:
 	@echo "> python setup.py $*"
-	$(NAME)/bin/python setup.py $*
+	$(PYTHON) setup.py $*
 
 build: $(NAME) setup-build
 
 $(NAME):
 	@echo "* Creating virtual environment "
 	pyvenv $(NAME)
-	pip install -r requirements.txt
+	$(PYTHON_PIP) install -r requirements.txt
 
 ez_setup.py:
 	@echo "  - Installing setuptools"
