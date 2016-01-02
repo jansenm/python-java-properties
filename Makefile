@@ -1,8 +1,17 @@
+# Makefile
+
 NAME=env
 
+PYTHON := $(PWD)/env/bin/python
+PYTHON_UNITTEST := $(PYTHON) -m unittest
+PYTHON_JUNIT := $(PYTHON) -m xmlrunner
 
 test: build
-	python -m unittest
+	$(PYTHON_UNITTEST) discover
+
+test-junit: build
+	mkdir -p build/test/junit
+	cd build/test/junit; $(PYTHON_JUNIT) discover -t ../../.. ../../../mjbiz
 
 develop:
 	$(NAME)/bin/python setup.py develop
@@ -27,20 +36,15 @@ doc:
 
 setup-%:
 	@echo "> python setup.py $*"
-	python setup.py $*
+	$(NAME)/bin/python setup.py $*
 
-build: setup-build
-
-setup: ez_setup.py $(NAME)
-	@echo "  - Installing setuptools"
-	wget https://bootstrap.pypa.io/ez_setup.py -O - | $(NAME)/bin/python
-	@echo "  - Installing pip"
-	$(NAME)/bin/easy_install pip
+build: $(NAME) setup-build
 
 $(NAME):
 	@echo "* Creating virtual environment "
 	pyvenv $(NAME)
 
 ez_setup.py:
-	wget https://bootstrap.pypa.io/ez_setup.py
+	@echo "  - Installing setuptools"
+	wget https://bootstrap.pypa.io/ez_setup.py -O - | $(NAME)/bin/python
 
