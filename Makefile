@@ -43,6 +43,7 @@ build: $(NAME) setup-build
 $(NAME):
 	@echo "* Creating virtual environment "
 	pyvenv $(NAME)
+	pip install -r requirements.txt
 
 ez_setup.py:
 	@echo "  - Installing setuptools"
